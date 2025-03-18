@@ -12,3 +12,11 @@
 🔹 HTML – Structure the gallery and lightbox
 🔹 CSS – Animations and responsive styling
 🔹 JavaScript – Lightbox, slideshow, and theme toggling
+
+📌 How to Use?
+
+Clone this repo: git clone https://github.com/vaishnavi7997/CodeAlpha-image-gallery.git 
+2)Open any .js file and run it in the browser console or Node.js.
+Live Demo (netlify) :- https://image-gallery-codealpha.netlify.app/
+
+
