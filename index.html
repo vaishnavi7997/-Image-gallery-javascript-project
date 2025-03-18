@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3D Animated Image Gallery</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+    </style>
+</head>
+<body>
+    <button class="theme-toggle" onclick="toggleTheme()">Toggle Theme</button>
+    <h1>3D Animated Image Gallery</h1>
+    <div class="gallery">
+        <img src="assets/nature.avif" alt="Nature" onclick="openLightbox(this, 0)">
+        <img src="assets/city.webp" alt="City" onclick="openLightbox(this, 1)">
+        <img src="assets/forest.webp" alt="Forest" onclick="openLightbox(this, 2)">
+        <img src="assets/ocean.webp" alt="Ocean" onclick="openLightbox(this, 3)">
+        <img src="assets/des.webp" alt="Desert" onclick="openLightbox(this, 4)">
+        <img src="assets/moun.webp" alt="Mountains" onclick="openLightbox(this, 5)">
+        <img src="assets/water.webp" alt="Waterfall" onclick="openLightbox(this, 6)">
+        <img src="assets/tech.webp" alt="Technology" onclick="openLightbox(this, 7)">
+        <img src="assets/sunset.webp" alt="Sunset" onclick="openLightbox(this, 8)">
+        <img src="assets/night.avif" alt="Starry Night" onclick="openLightbox(this, 9)">
+        <img src="assets/flower.webp" alt="Flowers" onclick="openLightbox(this, 10)">
+        <img src="assets/rainfor.webp" alt="Rainforest" onclick="openLightbox(this, 11)">
+        <img src="assets/glac.webp" alt="Glacier" onclick="openLightbox(this, 12)">
+        <img src="assets/volc.webp" alt="Volcano" onclick="openLightbox(this, 13)">
+        <img src="assets/river.webp" alt="River" onclick="openLightbox(this, 14)">
+        <img src="assets/space.avif" alt="Space" onclick="openLightbox(this, 15)">
+        <img src="assets/snow.jpg" alt="Snowy Landscape" onclick="openLightbox(this, 16)">
+        <img src="assets/canyon.webp" alt="Canyon" onclick="openLightbox(this, 17)">
+        <img src="assets/lake.avif" alt="Lake" onclick="openLightbox(this, 18)">
+        <img src="assets/moon.avif" alt="Moon" onclick="openLightbox(this, 19)">
+    </div>
+    <div class="lightbox" id="lightbox">
+        <span class="close" onclick="closeLightbox()">&times;</span>
+        <span class="prev" onclick="changeImage(-1)">&#10094;</span>
+        <img id="lightbox-img">
+        <div class="caption" id="caption"></div>
+        <span class="next" onclick="changeImage(1)">&#10095;</span>
+    </div>
+    <script>
+            let currentIndex = 0;
+    let images = document.querySelectorAll('.gallery img');
+    let captions = Array.from(images).map(img => img.alt); 
+    let autoSlide;
+
+    function openLightbox(img, index) {
+        document.getElementById('lightbox-img').src = img.src;
+        document.getElementById('caption').textContent = captions[index];
+        document.getElementById('lightbox').classList.add('show');
+        currentIndex = index;
+        startSlideshow();
+    }
+
+    function closeLightbox() {
+        document.getElementById('lightbox').classList.remove('show');
+        clearInterval(autoSlide);
+    }
+
+    function changeImage(step) {
+        currentIndex = (currentIndex + step + images.length) % images.length;
+        document.getElementById('lightbox-img').src = images[currentIndex].src;
+        document.getElementById('caption').textContent = captions[currentIndex];
+    }
+
+    function startSlideshow() {
+        clearInterval(autoSlide);
+        autoSlide = setInterval(() => changeImage(1), 3000);
+    }
+
+    function toggleTheme() {
+        document.body.classList.toggle('dark-mode');
+    }
+
+    </script>
+</body>
+</html>
